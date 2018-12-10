@@ -1,6 +1,4 @@
-### How to
-
-
+## How to
 
 ### Start blockchain
 ```sh
@@ -11,6 +9,11 @@ target/release/asure-network-mvp-node --dev
 
 cargo build
 cargo run
+```
+
+### Restore Alice Account with balances
+```sh
+subkey restore Alice
 ```
 
 
