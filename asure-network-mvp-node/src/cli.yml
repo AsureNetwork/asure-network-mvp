@@ -1,0 +1,12 @@
+name: asure-network-mvp-node
+author: "Asure.Network"
+about: asure-network-mvp-node
+args:
+  - log:
+      short: l
+      value_name: LOG_PATTERN
+      help: Sets a custom logging
+      takes_value: true
+subcommands:
+  - validator:
+      about: Run validator node
