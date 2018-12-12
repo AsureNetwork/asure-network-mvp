@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
+set -x
 set -e
 
-PROJECT_ROOT=`git rev-parse --show-toplevel`
+PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 export CARGO_INCREMENTAL=0
 
@@ -11,8 +12,6 @@ normal=$(tput sgr0)
 
 # Save current directory.
 pushd . >/dev/null
-
-cd $ROOT
 
 for SRC in runtime/wasm
 do
