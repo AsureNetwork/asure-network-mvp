@@ -29,6 +29,8 @@ extern crate srml_timestamp as timestamp;
 extern crate srml_balances as balances;
 extern crate srml_upgrade_key as upgrade_key;
 
+mod demo;
+
 #[cfg(feature = "std")]
 use parity_codec::{Encode, Decode};
 use rstd::prelude::*;
@@ -96,8 +98,8 @@ pub mod opaque {
 
 /// This runtime version.
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-	spec_name: ver_str!("asure-network-mvp-node"),
-	impl_name: ver_str!("asure-network-mvp-node"),
+	spec_name: ver_str!("asure-network-mvp-node-demo"),
+	impl_name: ver_str!("asure-network-mvp-node-demo"),
 	authoring_version: 1,
 	spec_version: 1,
 	impl_version: 0,
@@ -177,6 +179,8 @@ impl upgrade_key::Trait for Runtime {
 	type Event = Event;
 }
 
+impl demo::Trait for Runtime { }
+
 construct_runtime!(
 	pub enum Runtime with Log(InternalLog: DigestItem<Hash, AuthorityId>) where
 		Block = Block,
@@ -187,6 +191,7 @@ construct_runtime!(
 		Consensus: consensus::{Module, Call, Storage, Config<T>, Log(AuthoritiesChange), Inherent},
 		Balances: balances,
 		UpgradeKey: upgrade_key,
+		Demo: demo::{Module, Call, Storage, Config<T>},
 	}
 );
 
