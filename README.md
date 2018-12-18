@@ -17,9 +17,14 @@ subkey restore Alice
 ```
 
 
-### Start Server
+### Start Substrate-UI
 ```sh
 cd asure-network-mvp-node-ui/
 yarn dev
 ```
 
+### Start polkadot-js/apps
+```sh
+cd apps/
+yarn run start
+```
