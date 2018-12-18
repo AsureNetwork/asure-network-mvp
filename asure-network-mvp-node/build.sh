@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
 set -e
 
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"

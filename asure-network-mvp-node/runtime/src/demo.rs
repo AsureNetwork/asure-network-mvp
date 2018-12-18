@@ -1,10 +1,9 @@
-// initialise with:
-// post({sender: runtime.balances.ss58Decode('F7Gh'), call: calls.demo.setPayment(1000)}).tie(console.log)
-
 use parity_codec::Encode;
 use srml_support::{StorageValue, dispatch::Result};
 use runtime_primitives::traits::Hash;
 use {balances, system::{self, ensure_signed}};
+
+
 
 pub trait Trait: balances::Trait {}
 
@@ -34,6 +33,10 @@ decl_module! {
 			}
 			Ok(())
 		}
+		fn send_sometext(_origin, value: T::Balance) -> Result {
+		    <SomeText<T>>::put(value);
+		    Ok(())
+		}
 	}
 }
 
@@ -41,5 +44,6 @@ decl_storage! {
 	trait Store for Module<T: Trait> as Demo {
 		Payment get(payment) config(): Option<T::Balance>;
 		Pot get(pot): T::Balance;
+		SomeText get(sometext): T::Balance;
 	}
 }
